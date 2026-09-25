@@ -1,4 +1,34 @@
-<button ng-if="logado && comentario.user_id === usuario.id"
-        ng-click="excluirComentario(comentario.id)">Excluir</button>
+<article class="article container-narrow" ng-if="postagem">
+  <span class="tag" ng-class="postagem.categoria">{{ postagem.categoria }}</span>
+  <h1>{{ postagem.title }}</h1>
+  <div class="meta">{{ postagem.profileName }} · {{ postagem.postDate }}</div>
+  <img class="cover" ng-src="{{ postagem.thumbImage }}">
+  <div class="conteudo">{{ postagem.description }}</div>
 
-<a ng-if="logado" href="#!/post/{{ postagem.id }}/editar" class="btn btn-secondary">Editar</a>
+  <div class="acoes" ng-if="logado">
+    <a href="#!/post/{{ postagem.id }}/editar" class="btn btn-outline">Editar postagem</a>
+  </div>
+
+  <div class="comentarios">
+    <h2>Comentários</h2>
+
+    <div class="comentario-form" ng-if="logado">
+      <div class="campo">
+        <textarea ng-model="novoComentario" placeholder="Escreva um comentário..."></textarea>
+      </div>
+      <button class="btn btn-primary" ng-click="enviarComentario()">Comentar</button>
+    </div>
+    <p class="comentario-login-aviso" ng-if="!logado">
+      <a href="#!/login">Entre</a> para deixar um comentário.
+    </p>
+
+    <div class="comentario" ng-repeat="comentario in comentarios">
+      <span class="autor">{{ comentario.autor_nome }}</span>
+      <span class="data">{{ comentario.created_at | date:'dd/MM/yyyy HH:mm' }}</span>
+      <p>{{ comentario.texto }}</p>
+      <button class="btn-danger-text" ng-if="logado && comentario.user_id === usuario.id" ng-click="excluirComentario(comentario.id)">Excluir</button>
+    </div>
+
+    <p ng-if="comentarios.length === 0" style="color: var(--muted)">Nenhum comentário ainda.</p>
+  </div>
+</article>

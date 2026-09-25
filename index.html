@@ -1,13 +1,46 @@
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular-route.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
-<script src="app.js"></script>
-<script src="services/auth.service.js"></script>
-<script src="services/api.service.js"></script>
-<script src="controllers/lista.controller.js"></script>
-<script src="controllers/detalhe.controller.js"></script>
-<script src="controllers/editar.controller.js"></script>
-<script src="controllers/login.controller.js"></script>
-<script src="controllers/cadastro.controller.js"></script>
-<script src="controllers/esqueci-senha.controller.js"></script>
-<script src="controllers/redefinir-senha.controller.js"></script>
+<!doctype html>
+<html lang="pt-BR" ng-app="blog">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Blog</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular-route.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+    <script src="app.js"></script>
+    <script src="services/auth.service.js"></script>
+    <script src="services/api.service.js"></script>
+    <script src="controllers/header.controller.js"></script>
+    <script src="controllers/lista.controller.js"></script>
+    <script src="controllers/detalhe.controller.js"></script>
+    <script src="controllers/editar.controller.js"></script>
+    <script src="controllers/login.controller.js"></script>
+    <script src="controllers/cadastro.controller.js"></script>
+    <script src="controllers/esqueci-senha.controller.js"></script>
+    <script src="controllers/redefinir-senha.controller.js"></script>
+  </head>
+  <body>
+    <header class="site-header" ng-controller="HeaderController">
+      <div class="bar">
+        <a href="#!/" class="wordmark">Blog</a>
+        <div class="nav-actions">
+          <span class="usuario" ng-if="logado">Olá, {{ usuario.user_metadata.nome || usuario.email }}</span>
+          <a href="" ng-click="sair()" ng-if="logado">Sair</a>
+          <a href="#!/login" ng-if="!logado">Entrar</a>
+          <a href="#!/cadastro" ng-if="!logado">Criar conta</a>
+        </div>
+      </div>
+    </header>
+
+    <main ng-view></main>
+
+    <footer class="site-footer">
+      <div class="container">Blog feito com AngularJS + Supabase</div>
+    </footer>
+  </body>
+</html>

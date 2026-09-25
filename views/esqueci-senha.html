@@ -1,26 +1,23 @@
-<div class="container py-5" style="max-width: 400px;">
-  <h2 class="mb-4 text-center">Criar conta</h2>
+<div class="auth-wrap">
+  <div class="auth-card">
+    <h2>Esqueci minha senha</h2>
+    <p class="sub">Enviamos um link para você criar uma nova senha.</p>
 
-  <div class="alert alert-danger" ng-if="erro">{{ erro }}</div>
-  <div class="alert alert-success" ng-if="sucesso">{{ sucesso }}</div>
+    <div class="alerta alerta-sucesso" ng-if="enviado">
+      Se esse e-mail estiver cadastrado, o link chega em instantes.
+    </div>
 
-  <form ng-submit="cadastrar()" ng-if="!sucesso">
-    <div class="mb-3">
-      <label class="form-label">Nome</label>
-      <input type="text" class="form-control" ng-model="nome" required>
-    </div>
-    <div class="mb-3">
-      <label class="form-label">E-mail</label>
-      <input type="email" class="form-control" ng-model="email" required>
-    </div>
-    <div class="mb-3">
-      <label class="form-label">Senha</label>
-      <input type="password" class="form-control" ng-model="senha" required minlength="6">
-    </div>
-    <button type="submit" class="btn btn-primary w-100">Cadastrar</button>
-  </form>
+    <form ng-submit="enviar()" ng-if="!enviado">
+      <div class="campo">
+        <label>E-mail</label>
+        <input type="email" ng-model="email" required>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Enviar link</button>
+    </form>
 
-  <div class="mt-3">
-    <a href="#!/login">Já tenho conta &rarr;</a>
+    <div class="auth-links">
+      <a href="#!/login">Voltar para o login</a>
+      <span></span>
+    </div>
   </div>
 </div>

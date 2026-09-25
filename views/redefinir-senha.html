@@ -1,14 +1,16 @@
-<div class="container py-5" style="max-width: 400px;">
-  <h2 class="mb-4 text-center">Redefinir senha</h2>
+<div class="auth-wrap">
+  <div class="auth-card">
+    <h2>Redefinir senha</h2>
+    <p class="sub">Escolha uma nova senha para sua conta.</p>
 
-  <div class="alert alert-danger" ng-if="erro">{{ erro }}</div>
+    <div class="alerta alerta-erro" ng-if="erro">{{ erro }}</div>
 
-  <form ng-submit="salvar()">
-    <p class="text-muted">Digite sua nova senha.</p>
-    <div class="mb-3">
-      <label class="form-label">Nova senha</label>
-      <input type="password" class="form-control" ng-model="novaSenha" required minlength="6">
-    </div>
-    <button type="submit" class="btn btn-primary w-100">Salvar nova senha</button>
-  </form>
+    <form ng-submit="salvar()">
+      <div class="campo">
+        <label>Nova senha</label>
+        <input type="password" ng-model="novaSenha" required minlength="6">
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Salvar nova senha</button>
+    </form>
+  </div>
 </div>

@@ -24,4 +24,28 @@
       <a href="#!/post/{{ postagem.id }}" class="btn btn-outline-secondary">Cancelar</a>
     </div>
   </form>
+</div><div class="auth-wrap">
+  <div class="auth-card">
+    <h2>Entrar</h2>
+    <p class="sub">Acesse sua conta para comentar e editar postagens.</p>
+
+    <div class="alerta alerta-erro" ng-if="erro">{{ erro }}</div>
+
+    <form ng-submit="entrar()">
+      <div class="campo">
+        <label>E-mail</label>
+        <input type="email" ng-model="email" required>
+      </div>
+      <div class="campo">
+        <label>Senha</label>
+        <input type="password" ng-model="senha" required>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+    </form>
+
+    <div class="auth-links">
+      <a href="#!/esqueci-senha">Esqueci minha senha</a>
+      <a href="#!/cadastro">Criar conta</a>
+    </div>
+  </div>
 </div>

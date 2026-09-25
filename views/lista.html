@@ -1,1 +1,20 @@
-<a href="#!/post/{{ publicacao.id }}" class="btn btn-sm btn-primary">Ler mais</a>
+<section class="hero">
+  <h1>Últimas postagens</h1>
+  <p>Tecnologia, carros, games e o que mais está bombando na internet.</p>
+</section>
+
+<div class="post-grid">
+  <div class="post-card" ng-repeat="publicacao in publicacoes">
+    <div class="thumb-wrap">
+      <img ng-src="{{ publicacao.thumbImage }}">
+      <span class="tag" ng-class="publicacao.categoria">{{ publicacao.categoria }}</span>
+    </div>
+    <div class="body">
+      <h3>{{ publicacao.title }}</h3>
+      <p>{{ publicacao.description | limitTo: 110 }}{{ publicacao.description.length > 110 ? '…' : '' }}</p>
+      <div class="actions">
+        <a href="#!/post/{{ publicacao.id }}" class="ler-mais">Ler mais</a>
+      </div>
+    </div>
+  </div>
+</div>
