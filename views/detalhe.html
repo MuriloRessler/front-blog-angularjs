@@ -1,0 +1,4 @@
+<button ng-if="logado && comentario.user_id === usuario.id"
+        ng-click="excluirComentario(comentario.id)">Excluir</button>
+
+<a ng-if="logado" href="#!/post/{{ postagem.id }}/editar" class="btn btn-secondary">Editar</a>
