@@ -1,51 +1,27 @@
-<div class="container py-5" style="max-width: 600px;">
-  <h2 class="mb-4">Editar postagem</h2>
+<div class="form-page" ng-if="postagem">
+  <h2>Editar postagem</h2>
 
-  <form ng-submit="salvar()" ng-if="postagem">
-    <div class="mb-3">
-      <label class="form-label">Título</label>
-      <input type="text" class="form-control" ng-model="postagem.title" required>
+  <form ng-submit="salvar()">
+    <div class="campo">
+      <label>Título</label>
+      <input type="text" ng-model="postagem.title" required>
     </div>
-    <div class="mb-3">
-      <label class="form-label">Descrição</label>
-      <textarea class="form-control" rows="4" ng-model="postagem.description" required></textarea>
+    <div class="campo">
+      <label>Descrição</label>
+      <textarea ng-model="postagem.description" required></textarea>
     </div>
-    <div class="mb-3">
-      <label class="form-label">Imagem (URL)</label>
-      <input type="text" class="form-control" ng-model="postagem.thumbImage">
+    <div class="campo">
+      <label>Imagem (URL)</label>
+      <input type="text" ng-model="postagem.thumbImage">
     </div>
-    <div class="mb-3">
-      <label class="form-label">Categoria</label>
-      <input type="text" class="form-control" ng-model="postagem.categoria">
+    <div class="campo">
+      <label>Categoria</label>
+      <input type="text" ng-model="postagem.categoria">
     </div>
 
-    <div class="d-flex gap-2">
+    <div class="form-actions">
       <button type="submit" class="btn btn-primary">Salvar alterações</button>
-      <a href="#!/post/{{ postagem.id }}" class="btn btn-outline-secondary">Cancelar</a>
+      <a href="#!/post/{{ postagem.id }}" class="btn btn-outline">Cancelar</a>
     </div>
   </form>
-</div><div class="auth-wrap">
-  <div class="auth-card">
-    <h2>Entrar</h2>
-    <p class="sub">Acesse sua conta para comentar e editar postagens.</p>
-
-    <div class="alerta alerta-erro" ng-if="erro">{{ erro }}</div>
-
-    <form ng-submit="entrar()">
-      <div class="campo">
-        <label>E-mail</label>
-        <input type="email" ng-model="email" required>
-      </div>
-      <div class="campo">
-        <label>Senha</label>
-        <input type="password" ng-model="senha" required>
-      </div>
-      <button type="submit" class="btn btn-primary btn-block">Entrar</button>
-    </form>
-
-    <div class="auth-links">
-      <a href="#!/esqueci-senha">Esqueci minha senha</a>
-      <a href="#!/cadastro">Criar conta</a>
-    </div>
-  </div>
 </div>
